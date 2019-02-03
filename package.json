@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-tech-blog",
+  "name": "My blog",
   "version": "1.0.0",
   "description": "A Gatsby Starter Tech Blog template",
   "main": "index.js",
-  "author": "Vimalraj Selvam",
+  "author": "Muhammad Irsyad",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",

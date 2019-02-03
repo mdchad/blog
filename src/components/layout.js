@@ -8,6 +8,7 @@ import Sidebar from './sidebar'
 const Container = styled.div`
   display: flex;
   height: 100vh;
+  font-family: 'Montserrat' !important;
 `
 
 const Content = styled.div`
@@ -17,6 +18,7 @@ const Content = styled.div`
   overflow: scroll;
   padding: 20px;
   color: #7e7e7e;
+  background-color: #f9f9f9;
 `
 
 const Query = graphql`
@@ -25,6 +27,7 @@ const Query = graphql`
       siteMetadata {
         title
         authorName
+        bio
       }
     }
   }
@@ -34,16 +37,17 @@ export default ({ children }) => (
   <StaticQuery
     query={Query}
     render={data => {
-      const { title, siteDescription, authorName } = data.site.siteMetadata
+      const { title, siteDescription, authorName, bio } = data.site.siteMetadata
       return (
         <>
           <Helmet>
             <meta charSet="utf-8" />
             <meta name="description" content={siteDescription} />
             <title>{title}</title>
+            <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link>
           </Helmet>
           <Container>
-            <Sidebar title={title} authorName={authorName} />
+            <Sidebar title={title} bio={bio} authorName={authorName} />
             <Content>{children}</Content>
           </Container>
         </>

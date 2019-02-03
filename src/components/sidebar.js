@@ -6,7 +6,8 @@ import {
   FaUserSecret,
   FaLinkedin,
   FaGithub,
-  FaHashtag
+  FaHashtag,
+  FaTwitter
 } from 'react-icons/fa'
 
 const Sidebar = styled.div`
@@ -35,8 +36,9 @@ const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
-  background-color: #193549;
-  color: #dcdcdc;
+  /* background-color: #f5f5f5; */
+  background-color: white;
+  color: #5E4BA1;
   justify-content: center;
   align-items: center;
 `
@@ -86,16 +88,19 @@ const MenuWrapper = styled.div`
       display: none;
     }
   }
-
+  /*
   display: flex;
   flex-direction: row;
   div {
     margin: 10px;
-  }
+  } */
+  width: 50%;
+  text-align: center;
 `
 
 const SiteTitle = styled.h1`
   display: flex;
+  font-family: 'Montserrat';
 
   /* Device = Tablets, iPads (portrait) */
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -110,6 +115,21 @@ const SiteTitle = styled.h1`
   /* Device = Low resolution Tablets, Mobiles (landscape) */
   @media (min-width: 320px) and (max-width: 767px) {
     display: none;
+  }
+`
+
+const HomeMenu = styled.p`
+  margin-bottom: 0px;
+  padding: 1em 0%;
+  border-radius: 10px;
+
+
+  &:hover {
+    color: white;
+    background-color: #5E4BA1;
+    box-shadow: 11px 8px 12px 1px #c7c7c7;
+    border-radius: 10px;
+    transition: 0.7s;
   }
 `
 
@@ -132,54 +152,87 @@ const NameBoard = styled.h5`
   }
 `
 
-export default ({ title, authorName }) => (
+const IconContainer = styled.div`
+  display: flex;
+  margin-top: 1em;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+`
+
+const IconLink = styled.div`
+  margin-right: 5px;
+  border-radius: 5px;
+  padding: 0.3em 0.3em 0 0.3em;
+  &:hover{
+    background-color: #5E4BA1;
+    color: white;
+  }
+`
+
+export default ({ title, authorName, bio }) => (
   <Sidebar>
     <StyledLink to="/">
       <SiteTitle>{title}</SiteTitle>
     </StyledLink>
-    <Logo
+    {/* <Logo
       src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMDAiPgogIDxwYXRoIGQ9Ik02MDAgMEMyNjguNiAwIDAgMjY4LjYgMCA2MDBzMjY4LjYgNjAwIDYwMCA2MDAgNjAwLTI2OC42IDYwMC02MDBTOTMxLjQgMCA2MDAgMHpNMjY2LjYgOTMzLjNDMTc2LjEgODQyLjggMTMxIDcyNC42IDEyOS42IDYwNkw1OTQgMTA3MC40Yy0xMTguNi0xLjQtMjM2LjgtNDYuNS0zMjcuNC0xMzcuMXptNDM3LjcgMTI2LjFMMTQwLjYgNDk1LjdjNDcuNS0yMTAuMSAyMzUtMzY3LjEgNDU5LjQtMzY3LjEgMTU2LjkgMCAyOTUuNSA3NyAzODEuMiAxOTQuOUw5MTUuNiAzNzlDODQ1LjggMjc5LjUgNzMwLjUgMjE0LjMgNjAwIDIxNC4zYy0xNjcuNyAwLTMxMC4zIDEwNy43LTM2My4zIDI1Ny41bDQ5MS42IDQ5MS42YzEyMy40LTQzLjcgMjE4LTE0OC4yIDI0Ny42LTI3Ny42SDc3MS40VjYwMGgzMDBjMCAyMjQuNS0xNTcgNDExLjktMzY3LjEgNDU5LjR6IiBmaWxsPSIjNjM5Ii8+Cjwvc3ZnPgo="
       alt={authorName}
-    />
-    <NameBoard>{authorName}</NameBoard>
+    /> */}
+    <NameBoard>{bio}</NameBoard>
     <MenuWrapper>
       <div>
-        <p>
-          <StyledLink to="/">
+        <StyledLink to="/">
+          <HomeMenu>
             <FaHome /> <span>Home</span>
-          </StyledLink>
-        </p>
-        <p>
-          <StyledLink to="/about">
+          </HomeMenu>
+        </StyledLink>
+        <StyledLink to="/about">
+         <HomeMenu>
             <FaUserSecret /> <span>About</span>
-          </StyledLink>
-        </p>
-        <p>
-          <StyledLink to="/tags">
+          </HomeMenu>
+        </StyledLink>
+        <StyledLink to="/tags">
+          <HomeMenu>
             <FaHashtag /> <span>Tags</span>
-          </StyledLink>
-        </p>
+          </HomeMenu>
+        </StyledLink>
+        <StyledLink to="/projects">
+          <HomeMenu>
+            <FaHashtag /> <span>Projects</span>
+          </HomeMenu>
+        </StyledLink>
       </div>
-      <div>
-        <p>
-          <StyledHref
-            href="https://www.linkedin.com/in/vimalraj-selvam/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <FaLinkedin /> <span>Linkedin</span>
-          </StyledHref>
-        </p>
-        <p>
-          <StyledHref
-            href="https://github.com/email2vimalraj"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub /> <span>Github</span>
-          </StyledHref>
-        </p>
-      </div>
+      <IconContainer>
+        <StyledHref
+          href="https://www.linkedin.com/in/vimalraj-selvam/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <IconLink>
+            <FaLinkedin />
+          </IconLink>
+        </StyledHref>
+        <StyledHref
+          href="https://github.com/mdchad"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconLink>
+            <FaGithub />
+          </IconLink>
+        </StyledHref>
+        <StyledHref
+          href="https://twitter.com/irsyadchad14"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconLink>
+           <FaTwitter />
+          </IconLink>
+        </StyledHref>
+      </IconContainer>
     </MenuWrapper>
   </Sidebar>
 )
